@@ -16,6 +16,7 @@ We manage release notes in this file instead of the paginated Github Releases Pa
   <summary>Table of Contents</summary>
 
 - [React Router Releases](#react-router-releases)
+  - [v8.1.0](#v810)
   - [v8.0.1](#v801)
   - [v8.0.0](#v800)
     - [Baseline Support](#baseline-support)
@@ -103,6 +104,33 @@ We manage release notes in this file instead of the paginated Github Releases Pa
   - [v7.0.0](#v700)
 
 </details>
+
+## v8.1.0
+
+Date: 2026-06-25
+
+### Minor Changes
+
+- `react-router` - Return route metadata from server request, client navigation, and client fetcher instrumentations ([#15235](https://github.com/remix-run/react-router/pull/15235))
+
+  - Adds result metadata after instrumented calls complete, including the URL,
+    matched route pattern, and params.
+  - Adds known HTTP status codes to server request handler instrumentation results.
+
+- `create-react-router` - Add a default-on CLI option to include the official React Router agent skill in generated projects. ([#15213](https://github.com/remix-run/react-router/pull/15213))
+  - New projects include `.agents/skills/react-router` by default when running with `--yes` or in non-interactive shells.
+  - Interactive runs prompt to include the skill, defaulting to yes.
+  - Use `--no-agent-skills` to skip copying the skill.
+
+### Patch Changes
+
+- `@react-router/dev` - Fix a regression with the new prerendering plugin where the `react-router.config.ts` `buildEnd` hook would run before prerendering was completed ([#15211](https://github.com/remix-run/react-router/pull/15211))
+- `@react-router/dev` - Fixed `react-router typegen` crashes under the Bun runtime when Babel default imports are already unwrapped. ([#15214](https://github.com/remix-run/react-router/pull/15214))
+- `@react-router/dev` - Replace the deprecated `envFile:false` Vite config with `envDir:false` to eliminate a deprecation warning when using vite@8.1.0+ ([#15230](https://github.com/remix-run/react-router/pull/15230))
+- `@react-router/serve` - Use Node's built-in networking APIs to find an available port and remove the `get-port` dependency. ([#15239](https://github.com/remix-run/react-router/pull/15239))
+- `create-react-router` - Use Node's built-in utilities for CLI argument parsing, ANSI-stripping, and child process execution to remove the `arg`, `strip-ansi`, and `execa` dependencies. ([#15231](https://github.com/remix-run/react-router/pull/15231))
+
+**Full Changelog**: [`v8.0.1...v8.1.0`](https://github.com/remix-run/react-router/compare/react-router@8.0.1...react-router@8.1.0)
 
 ## v8.0.1
 
